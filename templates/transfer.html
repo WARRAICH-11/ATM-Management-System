@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Transfer | Personal Banking{% endblock %}
+{% block content %}
+<header class="page-heading"><div><p class="eyebrow">Move money</p><h1>Transfer money</h1><p class="muted">Send funds securely to another demo account.</p></div></header>
+<section class="form-card"><h2>Send money</h2><form class="form-stack" method="post" action="{{ url_for('transfer_page') }}"><label for="receiver-account">Recipient account number</label><input id="receiver-account" name="receiver_account" inputmode="numeric" placeholder="e.g. 10002" required><label for="transfer-amount">Amount</label><input id="transfer-amount" name="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required><button class="primary-button" type="submit">Send money <span>-></span></button></form></section>
+{% endblock %}

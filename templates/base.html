@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Personal Banking{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <a class="brand" href="{{ url_for('dashboard_page') }}"><span class="brand-mark">+</span><span>Personal<br>Banking</span></a>
+            <nav class="main-nav" aria-label="Main navigation">
+                <a class="nav-link {% if active_page == 'dashboard_page' %}active{% endif %}" href="{{ url_for('dashboard_page') }}"><span>◈</span> Dashboard</a>
+                <a class="nav-link {% if active_page == 'transactions_page' %}active{% endif %}" href="{{ url_for('transactions_page') }}"><span>≡</span> Transactions</a>
+                <a class="nav-link {% if active_page == 'transfer_page' %}active{% endif %}" href="{{ url_for('transfer_page') }}"><span>↗</span> Transfer</a>
+                <a class="nav-link {% if active_page == 'money_page' %}active{% endif %}" href="{{ url_for('money_page') }}"><span>↕</span> Money</a>
+                <a class="nav-link {% if active_page == 'profile_page' %}active{% endif %}" href="{{ url_for('profile_page') }}"><span>○</span> Profile</a>
+                <a class="nav-link {% if active_page == 'security_page' %}active{% endif %}" href="{{ url_for('security_page') }}"><span>◇</span> Security</a>
+            </nav>
+            <a class="logout-link" href="{{ url_for('logout_page') }}"><span>↪</span> Log out</a>
+        </aside>
+        <main class="main-content">
+            <header class="mobile-header">
+                <a class="brand" href="{{ url_for('dashboard_page') }}"><span class="brand-mark">+</span><span>Personal Banking</span></a>
+                <a href="{{ url_for('logout_page') }}">Log out</a>
+            </header>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-stack">
+                        {% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>

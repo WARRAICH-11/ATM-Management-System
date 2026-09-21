@@ -1,0 +1,26 @@
+[
+  {
+    "account_number": "10001",
+    "transaction_type": "Deposit",
+    "amount": 5000.0,
+    "date_time": "2026-09-17T23:11:26",
+    "balance_after_transaction": 55000.0
+  },
+  {
+    "account_number": "10001",
+    "transaction_type": "Withdrawal",
+    "amount": 4500.0,
+    "date_time": "2026-09-17T23:12:21",
+    "balance_after_transaction": 50500.0
+  },
+  {
+    "account_number": "10003",
+    "transaction_type": "Deposit",
+    "amount": 10000000.0,
+    "date_time": "2026-09-18T00:24:21",
+    "balance_after_transaction": 10075000.0,
+    "transaction_id": "18AF49CD7B",
+    "description": "Money deposited",
+    "related_account": ""
+  }
+]

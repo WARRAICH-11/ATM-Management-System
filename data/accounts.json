@@ -1,0 +1,29 @@
+[
+  {
+    "account_number": "10001",
+    "account_holder": "Hassan",
+    "pin": "1234",
+    "balance": 50500.0,
+    "account_type": "Savings",
+    "status": "Active",
+    "created_at": "2026-09-17"
+  },
+  {
+    "account_number": "10002",
+    "account_holder": "Ali",
+    "pin": "5678",
+    "balance": 30000.0,
+    "account_type": "Current",
+    "status": "Active",
+    "created_at": "2026-09-17"
+  },
+  {
+    "account_number": "10003",
+    "account_holder": "Ahmed",
+    "pin": "1111",
+    "balance": 10075000.0,
+    "account_type": "Savings",
+    "status": "Active",
+    "created_at": "2026-09-17"
+  }
+]

@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Security | Personal Banking{% endblock %}
+{% block content %}
+<header class="page-heading"><div><p class="eyebrow">Keep your account safe</p><h1>Account security</h1><p class="muted">Change your four-digit PIN.</p></div></header>
+<section class="form-card narrow-form"><h2>Change PIN</h2><form class="form-stack" method="post" action="{{ url_for('security_page') }}"><label for="old-pin">Current PIN</label><input id="old-pin" name="old_pin" type="password" inputmode="numeric" maxlength="4" required><label for="new-pin">New PIN</label><input id="new-pin" name="new_pin" type="password" inputmode="numeric" maxlength="4" required><label for="confirm-pin">Confirm new PIN</label><input id="confirm-pin" name="confirmation" type="password" inputmode="numeric" maxlength="4" required><button class="primary-button" type="submit">Change PIN <span>-></span></button></form></section>
+{% endblock %}

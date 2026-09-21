@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign in | Personal Banking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="login-page">
+    <main class="login-layout">
+        <section class="login-intro">
+            <div class="brand inverse"><span class="brand-mark">+</span><span>Personal<br>Banking</span></div>
+            <div><p class="eyebrow inverse-text">Simple money management</p><h1>Your money,<br><em>in your hands.</em></h1><p class="hero-copy">A calm, clear view of your everyday banking, built for the things that matter.</p></div>
+            <p class="login-note">Secure local demo environment</p>
+        </section>
+        <section class="login-card">
+            <p class="eyebrow">Welcome back</p><h2>Sign in to your account</h2><p class="muted">Use one of the demo accounts to continue.</p>
+            {% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}<div class="flash-stack">{% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}</div>{% endif %}{% endwith %}
+            <form class="form-stack" method="post" action="{{ url_for('login_page') }}">
+                <label for="account-number">Account number</label><input id="account-number" name="account_number" inputmode="numeric" placeholder="e.g. 10001" required>
+                <label for="pin">PIN</label><input id="pin" name="pin" type="password" inputmode="numeric" maxlength="4" placeholder="4-digit PIN" required>
+                <button class="primary-button" type="submit">Continue <span>-></span></button>
+            </form>
+            <div class="demo-hint"><strong>Demo access</strong><span>10001 / 1234</span><span>10002 / 5678</span><span>10003 / 1111</span></div>
+        </section>
+    </main>
+</body>
+</html>

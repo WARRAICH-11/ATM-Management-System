@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Money | Personal Banking{% endblock %}
+{% block content %}
+<header class="page-heading"><div><p class="eyebrow">Everyday banking</p><h1>Deposit or withdraw</h1><p class="muted">Manage your balance with simple, secure actions.</p></div></header>
+<div class="money-grid"><section class="form-card"><h2>Deposit money</h2><form class="form-stack" method="post" action="{{ url_for('money_page') }}"><input type="hidden" name="action" value="deposit"><label for="deposit-amount">Amount</label><input id="deposit-amount" name="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required><button class="primary-button" type="submit">Deposit <span>↓</span></button></form></section><section class="form-card"><h2>Withdrawal</h2><form class="form-stack" method="post" action="{{ url_for('money_page') }}"><input type="hidden" name="action" value="withdraw"><label for="withdraw-amount">Amount</label><input id="withdraw-amount" name="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required><button class="primary-button" type="submit">Withdraw <span>↑</span></button></form></section></div>
+{% endblock %}

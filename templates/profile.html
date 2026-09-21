@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Profile | Personal Banking{% endblock %}
+{% block content %}
+<header class="page-heading"><div><p class="eyebrow">Your details</p><h1>Account profile</h1><p class="muted">Review the information connected to your account.</p></div></header>
+<section class="profile-card"><div class="avatar">{{ account.account_holder[0] }}</div><div><h2>{{ account.account_holder }}</h2><p class="muted">Account {{ account.account_number }}</p></div><span class="active-badge">{{ account.status }}</span></section>
+<div class="detail-grid"><div><small>Account holder</small><strong>{{ account.account_holder }}</strong></div><div><small>Account number</small><strong>{{ account.account_number }}</strong></div><div><small>Account type</small><strong>{{ account.account_type }} Account</strong></div><div><small>Account status</small><strong>{{ account.status }}</strong></div><div><small>Creation date</small><strong>{{ account.created_at }}</strong></div><div><small>Current balance</small><strong>Rs. {{ "{:,.2f}".format(account.balance) }}</strong></div></div>
+{% endblock %}

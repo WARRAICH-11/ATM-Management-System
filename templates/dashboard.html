@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | Personal Banking{% endblock %}
+{% block content %}
+<header class="page-heading"><div><p class="eyebrow">Overview</p><h1>Good day, {{ account.account_holder }}</h1><p class="muted">Here is what is happening with your money.</p></div><div class="account-chip"><span class="status-dot"></span>Account {{ account.account_number }}</div></header>
+<section class="balance-grid">
+    <article class="balance-card"><div><p>Available balance</p><strong>Rs. {{ "{:,.2f}".format(account.balance) }}</strong><small>Account {{ account.account_number }}</small></div><span class="card-mark">+</span></article>
+    <article class="stat-card"><p>Total deposits</p><strong>Rs. {{ "{:,.2f}".format(stats.deposits) }}</strong><span class="stat-icon green">↓</span></article>
+    <article class="stat-card"><p>Total withdrawals</p><strong>Rs. {{ "{:,.2f}".format(stats.withdrawals) }}</strong><span class="stat-icon coral">↑</span></article>
+    <article class="stat-card"><p>Total transfers</p><strong>Rs. {{ "{:,.2f}".format(stats.transfers) }}</strong><span class="stat-icon blue">↗</span></article>
+</section>
+<div class="quick-actions"><a href="{{ url_for('transfer_page') }}">↗ Transfer money</a><a href="{{ url_for('transactions_page') }}">≡ View statement</a><a href="{{ url_for('money_page') }}">↕ Deposit / Withdraw</a><a href="{{ url_for('security_page') }}">◇ Change PIN</a></div>
+<section class="content-section"><div class="section-title"><div><p class="eyebrow">Activity</p><h2>Recent transactions</h2></div><a class="text-link" href="{{ url_for('transactions_page') }}">View all -></a></div>
+    <div class="transaction-list">{% for transaction in recent_transactions %}<div class="transaction-row"><span class="transaction-icon {% if transaction.transaction_type in ['Withdrawal', 'Transfer Sent'] %}outgoing{% else %}incoming{% endif %}">{% if transaction.transaction_type in ['Withdrawal', 'Transfer Sent'] %}↑{% else %}↓{% endif %}</span><div><strong>{{ transaction.transaction_type }}</strong><small>{{ transaction.description or 'Account activity' }}</small></div><strong class="{{ 'outgoing-text' if transaction.transaction_type in ['Withdrawal', 'Transfer Sent'] else 'incoming-text' }}">{{ '-' if transaction.transaction_type in ['Withdrawal', 'Transfer Sent'] else '+' }} Rs. {{ "{:,.2f}".format(transaction.amount) }}</strong><small>{{ transaction.date_time|replace('T', ' ') }}</small></div>{% else %}<p class="empty-state">No transactions yet.</p>{% endfor %}</div>
+</section>
+{% endblock %}
