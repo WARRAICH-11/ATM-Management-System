@@ -1,6 +1,6 @@
 # Personal Banking System
 
-A beginner-friendly Flask banking application with JSON persistence and real server-rendered pages.
+ Flask banking application with JSON persistence and real server-rendered pages.
 
 ## Features
 
